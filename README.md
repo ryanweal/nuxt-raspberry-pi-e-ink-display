@@ -24,6 +24,11 @@ https://kafei.dev
 
 
 
+<section data-background-image="/images/IMG_20190215_101034586.jpg">
+</section>
+
+
+
 ## Research phase
 
 - What Raspberry Pi models are available?
@@ -87,8 +92,9 @@ https://www.waveshare.com/product/2.13inch-e-paper-hat.htm
 ### Networking
 
 - Would be really cool to use cellular modem!
-- 2G is the only good power option, maybe 3G
-- HSPA+ and LTE cards cost lots and need extrnal power
+  - 2G is the only good power option, maybe 3G
+  - HSPA+ and LTE cards cost lots and need extrnal power
+  - The answer is NO, for now.
 - Let's use Wifi
 - Someday we could try Bluetooth
 
@@ -157,6 +163,11 @@ https://github.com/ryanweal/papercards
 - Fetch and parse the data on a schedule
 - Only write the data if it is valid
 - Leave the data there for now
+- Did you expect it to be easy to run on Pi?
+  - Pro-tip: use built-in Chromium
+  - Make sure to use correct puppeteer version to match!
+
+  https://github.com/GoogleChrome/puppeteer/issues/550
 
 
 
@@ -200,7 +211,34 @@ https://github.com/ryanweal/papercards
 - shell script then converts output png to 1-bit bmp
 - then we run the example python code to load it
 - and we put this into cron as a script
-  - or at startup, when we configure Sleepy Pi 2
+  - or at startup, when we configure Sleepy Pi
+
+
+
+#### Let it Run
+
+- It kept going from February to mid-June!
+- Not sure why it crashed...
+  - Power outage?
+  - New template for weather service?
+  - Was not home to find out
+
+
+
+<section data-background-image="/images/frozen-june30.jpg">
+</section>
+
+
+
+<section data-background-image="/images/unfrozen-june30.jpg">
+</section>
+
+
+
+#### Fixes itself...
+
+- The clear command a couple times will completely wipe away the problems
+- You can also just wait it out as it will clear on each update
 
 
 
@@ -224,4 +262,14 @@ https://github.com/ryanweal/papercards
 - Need to experiment with Sleepy Pi 2 settings
 - Smaller battery would fit better in most "lightboxes"
   - I am talking about a literal lightbox, these are a thing
-- Consume different APIs for fresh data: MLB, NHL are good
+- Consume different APIs for fresh data: MLB, NHL are good examples
+
+
+
+## Thanks!
+
+That's all for now...
+
+Ryan Weal
+
+https://kafei.dev
