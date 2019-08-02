@@ -10,6 +10,8 @@ Software Developer
 
 Kafei Interactive Inc.
 
+https://kafei.dev
+
 
 
 ### Idea behind this project
@@ -18,7 +20,7 @@ Kafei Interactive Inc.
 - Minimal battery recharging (months?)
 - Fetch data from the network
 - Re-use concepts I already know (web stuff)
-- Have fun (not work project)
+- Have fun (not a work project)
 
 
 
@@ -41,6 +43,8 @@ Kafei Interactive Inc.
   - Zero W - lowest power, less RAM, etc.
 - SD cards - get fast ones (and extras)
 
+https://en.wikipedia.org/wiki/Raspberry_Pi
+
 
 
 ### Hats?
@@ -48,6 +52,8 @@ Kafei Interactive Inc.
 - We also want to look at what pins they will use
 - Some pins support multiple hats, some do not
 - Many will rely on the GPIO connector, some do not
+
+https://pinout.xyz/boards
 
 
 
@@ -60,6 +66,8 @@ Kafei Interactive Inc.
 - has a fast refresh rate (important)
 - what pins will it be using?
 
+https://www.waveshare.com/product/2.13inch-e-paper-hat.htm
+
 
 
 ### Power
@@ -71,6 +79,8 @@ Kafei Interactive Inc.
 - Invested in a "Sleepy Pi 2" (arduino)
   - No ACPI support on Pi, so this will do
   - what pins will it be using?
+
+  https://spellfoundry.com/sleepy-pi/sleepy-pi-2-getting-started/
 
 
 
@@ -92,6 +102,7 @@ Kafei Interactive Inc.
 - 2 Waveshare 2.13" displays
 - 1 Sleepy Pi 2
 - 1 USB keyboard - to setup network
+- USB power bank - 5V USB power
 
 
 
@@ -100,6 +111,8 @@ Kafei Interactive Inc.
 - Pi-Hole
 - SSH console
 - The Nuxt Thing
+
+https://github.com/ryanweal/raspberry-pi-recipes
 
 
 
@@ -133,6 +146,8 @@ Kafei Interactive Inc.
 - Test commands powered by Python
 - Provide our own image? ...yes.
   - Needs to be 1-bit image though
+
+https://github.com/ryanweal/papercards
 
 
 
@@ -170,21 +185,43 @@ Kafei Interactive Inc.
 
 #### Convert 256(?) color PNG to 1-bit BMP
 
-- This was sorta hard to figure out
+- This was sorta hard to figure out...
+
+`convert output/weather.png -depth 1  ppm:- | pnmdepth 1 | ppmtobmp >output/weather.bmp`
 
 
 
 #### Putting it all together:
 
+- puppeteer script to parse values from scrape
+- pass the parse values to local webserver as parameters
+- nuxt consumes the parameters, makes display
+- puppeteer takes a snapshot
+- shell script then converts output png to 1-bit bmp
+- then we run the example python code to load it
+- and we put this into cron as a script
+  - or at startup, when we configure Sleepy Pi 2
+
 
 
 ### What about Sleepy Pi 2?
 
-- An Arduino board, an enterly different computer!
+- Now that we know it is stable, we can do this part...
+
+- It is an Arduino board, an enterly different computer!
 - Sets a wake/sleep schedule
-- Recpies are provided
-- Seems like I needed the GUI to run, which means running on a desktop...
-- I do not want to setup a desktop pi just for this!
-- Oh there is a connector cable option, forgot to buy
-- Oh the newer version is CLI-only but... it is running so who cares!
-- I will revisit this later
+- Recpies are provided by vendor
+- Had some trouble with needing local GUI
+  - Install a desktop?
+  - Get an external cable to flash it
+  - Do more research to not need to deal with GUI
+
+
+
+## Future considerations
+
+- It would be nice to have a cellular version
+- Need to experiment with Sleepy Pi 2 settings
+- Smaller battery would fit better in most "lightboxes"
+  - I am talking about a literal lightbox, these are a thing
+- Consume different APIs for fresh data: MLB, NHL are good
